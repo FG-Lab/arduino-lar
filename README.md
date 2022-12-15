@@ -1,2 +1,5 @@
 # arduino-lar
-TODO
+Build thwe library with
+```shell
+make lib
+```
