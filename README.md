@@ -1,5 +1,5 @@
 # arduino-lar
-Build thwe library with
+Build the library with
 ```shell
 make lib
 ```
