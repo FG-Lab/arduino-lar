@@ -25,16 +25,22 @@ void serial_init(uint16_t baudrate)
     _8bit_addr_from(UCSR0C_ADDR) = (1<<USBS0_INDX) | (3<<UCSZ00_INDX);
 }
 
-void serial_put_char(uint8_t data)
+void serial_put_char(char data)
 {
     while (!(_8bit_addr_from(UCSR0A_ADDR) & (1<<UDRE0_INDX)));
     _8bit_addr_from(UDR0_ADDR) = data;
 }
 
-void serial_print(const char* str)
+void serial_print(const char * str)
 {
     for (int i=0; str[i]!='\0'; i++)
     {
         serial_put_char(str[i]);
     }
+}
+
+uint8_t serial_read()
+{
+    while (!(_8bit_addr_from(UCSR0A_ADDR) & (1<<RXC0_INDX)));
+    return _8bit_addr_from(UDR0_ADDR);
 }

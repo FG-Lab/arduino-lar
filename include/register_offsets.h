@@ -13,5 +13,6 @@
 #define USBS0_INDX      3
 #define UCSZ00_INDX     1
 #define UDRE0_INDX      5
+#define RXC0_INDX       7
 
 #endif //ARDUINO_LAR_REGISTER_OFFSETS_H

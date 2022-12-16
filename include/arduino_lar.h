@@ -31,7 +31,8 @@ void set_pin_mode(uint16_t pin, int mode);
 void set_pin_state(uint16_t pin, int mode);
 
 void serial_init(uint16_t baudrate);
-void serial_put_char(uint8_t data);
+void serial_put_char(char data);
 void serial_print(const char* str);
+uint8_t serial_read();
 
 #endif
