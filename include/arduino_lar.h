@@ -17,7 +17,20 @@
 
 // Pins
 #define PIN_13 _define_pin(0x24, 5)
+#define PIN_12 _define_pin(0x24, 4)
+#define PIN_11 _define_pin(0x24, 3)
+#define PIN_10 _define_pin(0x24, 2)
+#define PIN_9 _define_pin(0x24, 1)
+#define PIN_8 _define_pin(0x24, 0)
+#define PIN_7 _define_pin(0x2A, 7)
+#define PIN_6 _define_pin(0x2A, 6)
+#define PIN_5 _define_pin(0x2A, 5)
+#define PIN_4 _define_pin(0x2A, 4)
+#define PIN_3 _define_pin(0x2A, 3)
 #define PIN_2 _define_pin(0x2A, 2)
+#define PIN_1 _define_pin(0x2A, 1)
+#define PIN_0 _define_pin(0x2A, 0)
+
 
 // Pin modes
 #define PIN_READ  0
