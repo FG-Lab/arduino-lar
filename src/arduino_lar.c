@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "../include/arduino_lar.h"
 
-
 void set_pin_mode(uint16_t pin, int mode)
 {
     uint8_t reg_data = (1 << _idx_of_pin(pin));
@@ -15,6 +14,25 @@ void set_pin_state(uint16_t pin, int state)
     uint8_t pin_state = (1<< _idx_of_pin(pin));
     if (state == PIN_HIGH) _prt_of_pin(pin) |= pin_state;
     else _prt_of_pin(pin) &= ~pin_state;
+}
+
+void set_pin_high(uint16_t pin)
+{
+  set_pin_state(pin, 1);
+}
+
+void set_pin_low(uint16_t pin)
+{
+  set_pin_state(pin, 0);
+}
+
+void set_output_pin(uint16_t pin)
+{
+  set_pin_mode(pin, 1);
+}
+void set_input_pin(uint16_t pin)
+{
+  set_pin_mode(pin, 0);
 }
 
 void serial_init(uint16_t baudrate)

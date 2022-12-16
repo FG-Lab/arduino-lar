@@ -20,6 +20,10 @@
 #define PIN_12 _define_pin(0x24, 4)
 #define PIN_11 _define_pin(0x24, 3)
 #define PIN_10 _define_pin(0x24, 2)
+#define PIN_D _define_pin(0x24, 5)
+#define PIN_C _define_pin(0x24, 4)
+#define PIN_B _define_pin(0x24, 3)
+#define PIN_A _define_pin(0x24, 2)
 #define PIN_9 _define_pin(0x24, 1)
 #define PIN_8 _define_pin(0x24, 0)
 #define PIN_7 _define_pin(0x2A, 7)
@@ -31,7 +35,6 @@
 #define PIN_1 _define_pin(0x2A, 1)
 #define PIN_0 _define_pin(0x2A, 0)
 
-
 // Pin modes
 #define PIN_READ  0
 #define PIN_WRITE 1
@@ -42,6 +45,11 @@
 
 void set_pin_mode(uint16_t pin, int mode);
 void set_pin_state(uint16_t pin, int mode);
+
+void set_pin_high(uint16_t pin);
+void set_pin_low(uint16_t pin);
+void set_output_pin(uint16_t pin);
+void set_input_pin(uint16_t pin);
 
 void serial_init(uint16_t baudrate);
 void serial_put_char(char data);
