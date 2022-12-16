@@ -33,6 +33,9 @@ void set_pin_state(uint16_t pin, int mode);
 void serial_init(uint16_t baudrate);
 void serial_put_char(char data);
 void serial_print(const char* str);
-uint8_t serial_read();
+void serial_println(const char* str);
+char serial_read();
+char* serial_readln(int max_len);
+char* serial_visual_readln(int max_len);
 
 #endif

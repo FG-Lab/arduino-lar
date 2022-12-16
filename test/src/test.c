@@ -3,10 +3,11 @@
 int main ()
 {
     serial_init(STANDARD_BAUDRATE);
-    serial_print("Gib ein Buchstaben ein\n\r");
 
-    char b = serial_read();
+    serial_println("Gib ein Satz ein und drücke dann Enter:");
 
-    serial_print("Dein Buchstabe war: ");
-    serial_put_char(b);
+    char* b = serial_visual_readln(200);
+
+    serial_print("Dein Satz war: ");
+    serial_println(b);
 }

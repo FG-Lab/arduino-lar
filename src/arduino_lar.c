@@ -1,3 +1,5 @@
+#include <string.h>
+#include <stdlib.h>
 #include "../include/arduino_lar.h"
 
 
@@ -39,8 +41,50 @@ void serial_print(const char * str)
     }
 }
 
-uint8_t serial_read()
+void serial_println(const char* str)
+{
+    serial_print(str);
+    serial_print("\n\r");
+}
+
+char serial_read()
 {
     while (!(_8bit_addr_from(UCSR0A_ADDR) & (1<<RXC0_INDX)));
     return _8bit_addr_from(UDR0_ADDR);
+}
+
+char* serial_readln(int max_len)
+{
+    char* result = malloc(10 * sizeof(char));
+
+    int i;
+    for (i=0; i<max_len; i++)
+    {
+        char current = serial_read();
+        if (current == '\r') break;
+        result[i] = current;
+    }
+
+    result[i] = '\0';
+
+    return result;
+}
+
+char* serial_visual_readln(int max_len)
+{
+    char* result = malloc(10 * sizeof(char));
+
+    int i;
+    for (i=0; i<max_len; i++)
+    {
+        char current = serial_read();
+        if (current == '\r') break;
+        serial_put_char(current);
+        result[i] = current;
+    }
+
+    result[i] = '\0';
+    serial_print("\n\r");
+
+    return result;
 }
