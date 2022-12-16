@@ -29,7 +29,7 @@ BOARDTYPE := atmega328p
 # here (TARGET_NAME)                   #
 ########################################
 
-TARGET_NAME := arduino_lar
+TARGET_NAME := arduino_lar_test
 CC = avr-gcc
 CFLAGS := -Os -DF_CPU=16000000UL -mmcu=$(BOARDTYPE) -Wall
 
@@ -50,7 +50,7 @@ BIN_PATH := bin
 SRC_PATH := src
 OBJ_PATH := obj
 LIB_PATH := lib
-LINK_LIBRARIES :=
+LINK_LIBRARIES := ../lib/arduino_lar.a
 
 
 
@@ -93,7 +93,7 @@ makedir:
 	@mkdir -p $(BIN_PATH) $(OBJ_PATH) $(LIB_PATH)
 
 .PHONY: all
-all: $(LIB_TARGET))
+all: $(TARGET)
 
 .PHONY: lib
 lib: makedir $(LIB_TARGET)
@@ -103,6 +103,6 @@ clean:
 	@echo cleaning...
 	@rm -f $(CLEAN_LIST)
 
-.PHONY: test
-test: makedir $(LIB_TARGET)
-	make -C test upload
+.PHONY: upload
+upload: makedir $(TARGET)
+	sudo -S avrdude -F -V -c arduino -p $(BOARDTYPE) -P /dev/ttyACM0 -b $(BAUDRATE) -U flash:w:$(TARGET)
