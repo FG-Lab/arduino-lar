@@ -55,7 +55,7 @@ LINK_LIBRARIES := ../lib/arduino_lar.a
 
 
 #########################################
-# You most likely	dont need to change #
+# You most likely	dont need to change   #
 # anything past this point...           #
 #########################################
 
